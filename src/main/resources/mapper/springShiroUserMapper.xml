@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.xipiker.springbootshiro.dao.springShiroUserMapper" >
+  <resultMap id="BaseResultMap" type="pers.xipiker.springbootshiro.domain.springShiroUser" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="findByName" parameterType="string" resultType="springShiroUser">
+    select
+      *
+    from
+      springShiroUser
+    where name = #{username}
+  </select>
+
+</mapper>
