@@ -7,9 +7,9 @@ import pers.xipiker.springbootshiro.domain.springShiroUser;
 import pers.xipiker.springbootshiro.service.springShiroUserService;
 
 /**
- * @author: $[USER]
- * @Date: $[DATE]
- * @Description:
+ * @author: xipiker
+ * @Date: 2019-8-3
+ * @Description: springShiroUserService
  */
 @Service("springShiroUserService")
 public class springShiroUserServiceImpl implements springShiroUserService {

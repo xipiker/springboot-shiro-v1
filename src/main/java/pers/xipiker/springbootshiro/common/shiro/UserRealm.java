@@ -13,6 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pers.xipiker.springbootshiro.domain.springShiroUser;
 import pers.xipiker.springbootshiro.service.springShiroUserService;
 
+/**
+ * @author: xipiker
+ * @Date: 2019-8-3
+ * @Description: UserRealm
+ */
 public class UserRealm extends AuthorizingRealm {
     @Autowired
     private springShiroUserService springShiroUserService;
