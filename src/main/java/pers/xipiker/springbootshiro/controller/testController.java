@@ -41,6 +41,11 @@ public class testController {
         return "/login";
     }
 
+    @RequestMapping("/noAuth")
+    public String noAuth(){
+        return "/noAuth";
+    }
+
     /**
      * 验证登录
      * @return

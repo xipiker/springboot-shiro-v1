@@ -39,10 +39,17 @@ public class ShiroConfig {
         filterMap.put("/test", "anon");
         //放行login.html
         filterMap.put("/login", "anon");
+
+        //授权过滤器
+        //注意:当授权拦截后，shiro会自动跳转到未授权页面
+        filterMap.put("/add", "perms[user:add]");
+
         filterMap.put("/*", "authc");
         //拦截成功会默认跳转到login.jsp
         //修改默认拦截成功跳转到login.jsp页面
         shiroFilterFactoryBean.setLoginUrl("/toLogin");
+        //设置未授权拦截器
+        shiroFilterFactoryBean.setUnauthorizedUrl("/noAuth");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
 
         return shiroFilterFactoryBean;
