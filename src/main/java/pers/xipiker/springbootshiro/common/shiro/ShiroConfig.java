@@ -43,6 +43,7 @@ public class ShiroConfig {
         //授权过滤器
         //注意:当授权拦截后，shiro会自动跳转到未授权页面
         filterMap.put("/add", "perms[user:add]");
+        filterMap.put("/update", "perms[user:update]");
 
         filterMap.put("/*", "authc");
         //拦截成功会默认跳转到login.jsp

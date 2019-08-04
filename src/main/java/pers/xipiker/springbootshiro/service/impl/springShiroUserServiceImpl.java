@@ -21,4 +21,9 @@ public class springShiroUserServiceImpl implements springShiroUserService {
     public springShiroUser findByName(String username) {
         return springShiroUserMapper.findByName(username);
     }
+
+    @Override
+    public springShiroUser findById(Integer id) {
+        return springShiroUserMapper.findById(id);
+    }
 }

@@ -1,10 +1,12 @@
 package pers.xipiker.springbootshiro.common.shiro;
 
-import lombok.var;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,17 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("执行授权逻辑");
-        return null;
+        //给资源进行授权
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        //添加授权字符串
+        //info.addStringPermission("user:add");
+        Subject subject = SecurityUtils.getSubject();
+        springShiroUser user = (springShiroUser) subject.getPrincipal();
+        springShiroUser user2 = springShiroUserService.findById(user.getId());
+
+        info.addStringPermission(user2.getPerms());
+
+        return info;
     }
 
     /**
@@ -48,6 +60,6 @@ public class UserRealm extends AuthorizingRealm {
             return null;
         }
         //2.判断密码
-        return new SimpleAuthenticationInfo("", springShiroUser.getPassword(), "");
+        return new SimpleAuthenticationInfo(springShiroUser, springShiroUser.getPassword(), "");
     }
 }

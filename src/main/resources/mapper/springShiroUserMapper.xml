@@ -14,4 +14,12 @@
     where name = #{username}
   </select>
 
+  <select id="findById" parameterType="int" resultType="springShiroUser">
+    select
+      *
+    from
+      springShiroUser
+    where id = #{id}
+  </select>
+
 </mapper>

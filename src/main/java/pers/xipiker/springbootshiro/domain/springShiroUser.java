@@ -10,4 +10,6 @@ public class springShiroUser {
 
     private String password;
 
+    private String perms;
+
 }
